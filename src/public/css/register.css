@@ -1,0 +1,200 @@
+main {
+    width: 1512px;
+    height: 930px;
+    padding-top: 70px;
+    padding-right: 376px;
+    padding-bottom: 70px;
+    padding-left: 376px;
+    gap: 40px;
+    opacity: 1;
+    background-color: #f8f8f8;
+}
+
+.register-container {
+    width: 760px;
+    height: 702;
+    gap: 30px;
+    opacity: 1;
+    font-family: Hiragino Kaku Gothic Pro;
+    margin-top: 40px;
+}
+
+.form-name-group {
+    width: 760px;
+    height: 77px;
+    gap: 10px;
+    opacity: 1;
+}
+
+.form-name-label-container {
+    gap: 10px;
+    opacity: 1;
+    display: flex;
+}
+
+.form-label {
+    font-family: Hiragino Kaku Gothic Pro;
+    font-weight: 300;
+    font-size: 16px;
+    color: #4b4b4b;
+}
+
+.required {
+    background: #fd0707;
+    color: #ffffff;
+    font-weight: 300;
+    font-size: 16px;
+    padding: 0px 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-input {
+    width: 760px;
+    height: 43px;
+    gap: 10px;
+    opacity: 1;
+    border: 1px solid #e0dfde;
+    margin-top: 10px;
+}
+
+.form-input::placeholder {
+    padding-left: 5px;
+    color: #e0dfde;
+}
+
+.form-price-group {
+    width: 760px;
+    height: 77px;
+    gap: 10px;
+    opacity: 1;
+    margin-top: 20px;
+}
+
+.form-price-label-container {
+    gap: 10px;
+    opacity: 1;
+    display: flex;
+}
+
+.form-image-group {
+    gap: 10px;
+    opacity: 1;
+    margin-top: 20px;
+}
+
+.form-image-label-container {
+    gap: 10px;
+    opacity: 1;
+    display: flex;
+}
+
+.file-input {
+    margin-top: 15px;
+    height: 43px;
+    gap: 10px;
+    opacity: 1;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+.form-season-group {
+    margin-top: 20px;
+}
+
+.form-season-label-container {
+    gap: 10px;
+    opacity: 1;
+    display: flex;
+}
+
+.multiple {
+    color: #fd0707;
+}
+
+.checkbox-group {
+    margin-top: 10px;
+}
+
+.checkbox-item {
+    margin-right: 30px;
+}
+
+.form-description-group {
+    gap: 10px;
+    opacity: 1;
+    margin-top: 20px;
+    width: 760px;
+    height: 194px;
+}
+
+.form-description-label-container {
+    gap: 10px;
+    opacity: 1;
+    display: flex;
+}
+
+.form-textarea {
+    width: 760px;
+    height: 160px;
+    gap: 10px;
+    opacity: 1;
+    margin-top: 10px;
+    border: 1px solid #e0dfde;
+}
+
+.form-textarea::placeholder {
+    padding-left: 5px;
+    padding-top: 5px;
+    color: #e0dfde;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.btn-back-container {
+    width: 200px;
+    height: 50px;
+    gap: 10px;
+    opacity: 1;
+    padding-top: 13px;
+    padding-right: 10px;
+    padding-bottom: 13px;
+    padding-left: 10px;
+    border-radius: 5px;
+    background: #e0dfde;
+    margin: 0 8px;
+    box-shadow: 0px 4px 10px 0px #0000001a;
+    text-decoration: none;
+    color: #4b4b4b;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-back-container:hover {
+    background: #d0cfcf;
+}
+
+.btn-submit-container {
+    width: 200px;
+    height: 50px;
+    gap: 10px;
+    opacity: 1;
+    padding-top: 13px;
+    padding-right: 10px;
+    padding-bottom: 13px;
+    padding-left: 10px;
+    border-radius: 5px;
+    background: #f5c800;
+    margin: 0 8px;
+    box-shadow: 0px 4px 10px 0px #0000001a;
+    border: 1px solid #e0dfde;
+    color: #4b4b4b;
+}
+
+.btn-submit-container:hover {
+    background: #df9425;
+}

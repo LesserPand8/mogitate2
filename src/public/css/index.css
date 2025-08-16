@@ -1,0 +1,9 @@
+main {
+    width: 1512;
+    height: 1000;
+    gap: 20px;
+    opacity: 1;
+    padding-top: 70px;
+    padding-bottom: 70px;
+    background-color: #f8f8f8;
+}

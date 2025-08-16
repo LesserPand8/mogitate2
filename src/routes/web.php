@@ -16,3 +16,4 @@ use App\Http\Controllers\MogitateController;
 
 Route::get('/products', [MogitateController::class, 'index']);
 Route::get('/products/register', [MogitateController::class, 'register']);
+Route::post('/products/register', [MogitateController::class, 'add']);
