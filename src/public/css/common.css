@@ -1,0 +1,25 @@
+/* ヘッダーのスタイル */
+.header {
+    width: 1512px;
+    height: 53px;
+    opacity: 1;
+    gap: 10px;
+    padding: 10px 20px;
+    background: #ffffff;
+    border-bottom: 1px solid #f4f4f4;
+    border-bottom-width: 1px;
+}
+
+.header__logo {
+    width: 112px;
+    height: 33px;
+    opacity: 1;
+    font-family: "jsMath-cmti10", serif;
+    font-weight: 500;
+    font-style: italic;
+    font-size: 30px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #f5c800;
+    text-decoration: none;
+}
