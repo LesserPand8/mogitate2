@@ -93,12 +93,6 @@ class MogitateController extends Controller
         $product->description = $validated['description'];
         $product->save();
 
-        $seasonIds = Season::whereIn('name', $validated['seasons'])->pluck('id');
-        $product->seasons()->sync($seasonIds);
-
-        return redirect('/products');
-    }
-}
         // 季節の紐付け更新
         if ($request->filled('seasons')) {
             $seasonIds = Season::whereIn('name', $request->input('seasons'))->pluck('id');
