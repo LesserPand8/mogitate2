@@ -6,12 +6,30 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Season;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\RegisterRequest;
 
 class MogitateController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return view('index');
+        $query = Product::query();
+
+        // 商品名検索
+        if ($request->filled('keyword')) {
+            $query->where('name', 'like', '%' . $request->keyword . '%');
+        }
+
+        // 並び替え
+        if ($request->sort === 'asc') {
+            $query->orderBy('price', 'asc');
+        } elseif ($request->sort === 'desc') {
+            $query->orderBy('price', 'desc');
+        }
+
+        // 6件ごとにページネーション
+        $products = $query->paginate(6);
+
+        return view('index', compact('products'));
     }
 
     public function register()
@@ -19,15 +37,9 @@ class MogitateController extends Controller
         return view('register');
     }
 
-    public function add(Request $request)
+    public function add(RegisterRequest $request)
     {
-        $validated = $request->validate([
-            'name' => 'required',
-            'price' => 'required|numeric|min:0|max:10000',
-            'image' => 'required|image|mimes:jpeg,png',
-            'seasons' => 'required|array',
-            'description' => 'required|max:120',
-        ]);
+        $validated = $request->validated();
 
         // 画像をpublic/imageに保存
         $imageFile = $request->file('image');
@@ -47,5 +59,11 @@ class MogitateController extends Controller
         $product->seasons()->sync($seasonIds);
 
         return redirect('/products');
+    }
+
+    public function show(Request $request, $id)
+    {
+        $product = Product::findOrFail($id);
+        return view('detail', compact('product'));
     }
 }

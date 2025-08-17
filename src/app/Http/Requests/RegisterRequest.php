@@ -13,7 +13,7 @@ class RegisterRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,27 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required',
+            'price' => 'integer|required|max:10000|min:0',
+            'image' => 'required|mimes:png,jpeg',
+            'seasons' => 'required',
+            'description' => 'required|max:120',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required' => '商品名を入力してください',
+            'price.required' => '値段を入力してください',
+            'price.integer' => '数値で入力してください',
+            'price.max' => '値段は0~10000円以内で入力してください',
+            'price.min' => '値段は0~10000円以内で入力してください',
+            'seasons.required' => '季節を選択してください',
+            'image.required' => '商品画像を登録してください',
+            'image.mimes' => '「.png」または「.jpeg」形式でアップロードしてください',
+            'description.required' => '商品説明を入力してください',
+            'description.max' => '商品説明は120文字以内で入力してください',
         ];
     }
 }

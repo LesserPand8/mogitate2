@@ -9,11 +9,11 @@
     <div class="products-header">
         <h1 class="page-title">商品一覧</h1>
         <div class="add-product">
-            <a href="{{ url('/products/register') }}" class="add-btn">+ 商品を追加</a>
+            <a href="/products/register" class="add-btn">+ 商品を追加</a>
         </div>
     </div>
     <div class="products-container">
-        <form method="GET" action="{{ route('products.index') }}" class="search-container">
+        <form method="GET" action="/products" class="search-container">
             <div class="search-box">
                 <div class="search-box-input">
                     <input type="text" name="keyword" class="search-input" placeholder="商品名で検索" value="{{ request('keyword') }}">
@@ -35,15 +35,15 @@
                 <span>
                     {{ request('sort') == 'asc' ? '安い順' : '高い順' }}
                 </span>
-                <a href="{{ route('products.index', array_merge(request()->except('sort', 'page'))) }}" class="sort-reset-btn">×</a>
+                <a href="{{ url('/products?' . http_build_query(array_merge(request()->except('sort', 'page'))) ) }}" class="sort-reset-btn">×</a>
             </div>
             @endif
         </form>
         <div class="products-list">
             @forelse($products as $product)
-            <div class="product-card" onclick="location.href='{{ route('products.show', $product->id) }}'">
+            <div class="product-card" onclick="location.href='/products/{{ $product->id }}'">
                 <div class="product-image">
-                    <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
+                    <img src="{{ asset($product->image) }}" alt="{{ $product->name }}">
                 </div>
                 <div class="product-info">
                     <div class="product-name">{{ $product->name }}</div>

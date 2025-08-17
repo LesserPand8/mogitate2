@@ -198,3 +198,8 @@ main {
 .btn-submit-container:hover {
     background: #df9425;
 }
+
+.error-message {
+    color: #fd0707;
+    margin-bottom: 15px;
+}
