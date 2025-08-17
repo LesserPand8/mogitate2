@@ -8,9 +8,7 @@
 <main>
     <div class="products-header">
         <h1 class="page-title">商品一覧</h1>
-        <div class="add-product">
-            <a href="/products/register" class="add-btn">+ 商品を追加</a>
-        </div>
+        <a href="/products/register" class="add-btn">+ 商品を追加</a>
     </div>
     <div class="products-container">
         <form method="GET" action="/products" class="search-container">
