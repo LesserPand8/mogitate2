@@ -13,11 +13,8 @@
     <div class="products-container">
         <form method="GET" action="/products" class="search-container">
             <div class="search-box">
-                <div class="search-box-input">
-                    <input type="text" name="keyword" class="search-input" placeholder="商品名で検索" value="{{ request('keyword') }}">
-                </div>
-                <button type="submit" class="search-btn">
-                    <span class="search-btn-text">検索</span>
+                <input type="text" name="keyword" class="search-input" placeholder="商品名で検索" value="{{ request('keyword') }}">
+                <button type="submit" class="search-btn">検索
                 </button>
             </div>
             <div class="sort-box">
@@ -27,33 +24,53 @@
                     <option value="asc" {{ request('sort') == 'asc' ? 'selected' : '' }}>安い順に表示</option>
                     <option value="desc" {{ request('sort') == 'desc' ? 'selected' : '' }}>高い順に表示</option>
                 </select>
+                @if(request('sort'))
+                <div class="sort-tag">
+                    <span>
+                        {{ request('sort') == 'asc' ? '安い順に表示' : '高い順に表示' }}
+                    </span>
+                    <a href="{{ url('/products?' . http_build_query(array_merge(request()->except('sort', 'page'))) ) }}" class="sort-reset-btn">×</a>
+                </div>
+                @endif
             </div>
-            @if(request('sort'))
-            <div class="sort-tag">
-                <span>
-                    {{ request('sort') == 'asc' ? '安い順' : '高い順' }}
-                </span>
-                <a href="{{ url('/products?' . http_build_query(array_merge(request()->except('sort', 'page'))) ) }}" class="sort-reset-btn">×</a>
-            </div>
-            @endif
         </form>
-        <div class="products-list">
-            @forelse($products as $product)
-            <div class="product-card" onclick="location.href='/products/{{ $product->id }}'">
-                <div class="product-image">
-                    <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
+        <div class="products">
+            <div class="products-list">
+                @forelse($products as $product)
+                <div class="product-card" onclick="location.href='/products/{{ $product->id }}'">
+                    <div class="product-image">
+                        <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">{{ $product->name }}</div>
+                        <div class="product-price">¥{{ number_format($product->price) }}</div>
+                    </div>
                 </div>
-                <div class="product-info">
-                    <div class="product-name">{{ $product->name }}</div>
-                    <div class="product-price">¥{{ number_format($product->price) }}</div>
-                </div>
+                @empty
+                <div class="no-products">商品が見つかりませんでした。</div>
+                @endforelse
             </div>
-            @empty
-            <div class="no-products">商品が見つかりませんでした。</div>
-            @endforelse
-        </div>
-        <div class="pagination">
-            {{ $products->appends(request()->except('page'))->links() }}
+            <div class="pagination">
+                @if ($products->lastPage() > 1)
+                {{-- 前へ --}}
+                <button class="pagination-arrow" {{ $products->onFirstPage() ? 'disabled' : '' }}
+                    onclick="location.href='{{ $products->appends(request()->except('page'))->previousPageUrl() }}'; return false;">
+                    &lt;
+                </button>
+                {{-- ページ番号 --}}
+                @for ($i = 1; $i <= $products->lastPage(); $i++)
+                    <button class="pagination-btn{{ $i == $products->currentPage() ? ' active' : '' }}"
+                        onclick="location.href='{{ $products->appends(request()->except('page'))->url($i) }}'; return false;">
+                        {{ $i }}
+                    </button>
+                    @endfor
+                    {{-- 次へ --}}
+                    <button class="pagination-arrow" {{ $products->currentPage() == $products->lastPage() ? 'disabled' : '' }}
+                        onclick="location.href='{{ $products->appends(request()->except('page'))->nextPageUrl() }}'; return false;">
+                        &gt;
+                    </button>
+                    @endif
+            </div>
         </div>
     </div>
 </main>
