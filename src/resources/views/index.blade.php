@@ -41,7 +41,7 @@
             @forelse($products as $product)
             <div class="product-card" onclick="location.href='/products/{{ $product->id }}'">
                 <div class="product-image">
-                    <img src="{{ asset($product->image) }}" alt="{{ $product->name }}">
+                    <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
                 </div>
                 <div class="product-info">
                     <div class="product-name">{{ $product->name }}</div>

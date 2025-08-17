@@ -10,12 +10,12 @@
         <div class="detail-header">
             <a href="/products" class="detail-link">商品一覧 &gt; {{ $product->name }}</a>
         </div>
-        <form action="/products/{{ $product->id }}" method="POST" enctype="multipart/form-data" class="detail-form">
+        <form action="/products/{{ $product->id }}/update" method="POST" enctype="multipart/form-data" class="detail-form">
             @csrf
             @method('PUT')
             <div class="detail-content">
                 <div class="detail-image">
-                    <img id="image-preview" src="{{ asset($product->image) }}" alt="{{ $product->name }}" style="max-width: 300px;">
+                    <img id="image-preview" src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" style="max-width: 300px;">
                     <input type="file" name="image" class="file-input" accept="image/*" onchange="previewImage(event)">
                     @if ($errors->has('image'))
                     <div class="error-message">
@@ -97,7 +97,7 @@
                 <a href="/products" class="btn-back">戻る</a>
                 <button type="submit" class="btn-save">変更を保存</button>
         </form>
-        <form action="/products/{{ $product->id }}" method="POST" style="display:inline;">
+        <form action="/products/{{ $product->id }}/delete" method="POST" style="display:inline;">
             @csrf
             @method('DELETE')
             <button type="submit" class="btn-delete" onclick="return confirm('本当に削除しますか？')">🗑</button>

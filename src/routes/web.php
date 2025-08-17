@@ -18,3 +18,5 @@ Route::get('/products', [MogitateController::class, 'index']);
 Route::get('/products/register', [MogitateController::class, 'register']);
 Route::post('/products/register', [MogitateController::class, 'add']);
 Route::get('/products/{id}', [MogitateController::class, 'show']);
+Route::delete('/products/{id}/delete', [MogitateController::class, 'delete']);
+Route::put('/products/{id}/update', [MogitateController::class, 'update']);
