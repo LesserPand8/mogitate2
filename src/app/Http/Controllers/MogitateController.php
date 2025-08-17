@@ -63,7 +63,7 @@ class MogitateController extends Controller
 
     public function show(Request $request, $id)
     {
-        $product = Product::findOrFail($id);
+        $product = Product::with('seasons')->findOrFail($id);
         return view('detail', compact('product'));
     }
 }
