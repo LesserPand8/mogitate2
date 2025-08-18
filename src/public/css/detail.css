@@ -1,0 +1,11 @@
+.main {
+    width: 1512px;
+    height: 797px;
+    padding-top: 70px;
+    padding-right: 356px;
+    padding-bottom: 70px;
+    padding-left: 356px;
+    gap: 30px;
+    opacity: 1;
+    background: #f8f8f8;
+}
