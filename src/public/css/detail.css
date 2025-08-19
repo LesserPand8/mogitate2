@@ -179,6 +179,9 @@ main {
     font-size: 16px;
     line-height: 100%;
     letter-spacing: 0%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .btn-save {
@@ -209,7 +212,7 @@ main {
 
 .btn-delete-form {
     position: absolute;
-    top: 540px;
+    top: 530px;
     right: 0;
 }
 

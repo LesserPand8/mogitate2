@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="{{ asset('css/detail.css') }}">
 @endsection
 
+
 @section('content')
 <main>
     <div class="detail-container">
