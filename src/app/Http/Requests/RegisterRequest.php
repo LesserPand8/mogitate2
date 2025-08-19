@@ -26,7 +26,7 @@ class RegisterRequest extends FormRequest
         return [
             'name' => 'required',
             'price' => 'integer|required|max:10000|min:0',
-            'image' => 'required|mimes:png,jpeg',
+            'image' => 'mimes:png,jpeg',
             'seasons' => 'required',
             'description' => 'required|max:120',
         ];

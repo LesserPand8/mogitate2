@@ -58,12 +58,16 @@
                     </label>
                     <div class="required">必須</div>
                 </div>
+                <div id="image-preview-container" style="margin-top:10px;">
+                    <img id="image-preview" src="" alt="プレビュー画像" style="display:none; max-width:200px; max-height:200px;" />
+                </div>
                 <input
                     type="file"
                     id="image"
                     name="image"
                     class="file-input"
-                    accept="image/*">
+                    accept="image/*"
+                    onchange="previewImage(event)">
                 @error('image')
                 <div class="error-message">{{ $message }}</div>
                 @enderror
@@ -130,5 +134,22 @@
             </div>
         </form>
     </div>
+    <script>
+        function previewImage(event) {
+            const input = event.target;
+            const preview = document.getElementById('image-preview');
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                }
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                preview.src = '';
+                preview.style.display = 'none';
+            }
+        }
+    </script>
 </main>
 @endsection
